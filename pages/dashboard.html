@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EduLearn</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <h1>Dashboard Overview</h1>
+                <div class="date-filter">
+                    <select id="timeRange">
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month" selected>This Month</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Key Metrics -->
+                <div class="metrics-section">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <img src="../assets/icons/projects.svg" alt="Total Projects">
+                        </div>
+                        <div class="metric-info">
+                            <h3>Total Projects</h3>
+                            <p class="metric-value">24</p>
+                            <span class="metric-trend positive">↑ 12%</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <img src="../assets/icons/tasks.svg" alt="Active Tasks">
+                        </div>
+                        <div class="metric-info">
+                            <h3>Active Tasks</h3>
+                            <p class="metric-value">67</p>
+                            <span class="metric-trend negative">↓ 5%</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <img src="../assets/icons/completed.svg" alt="Completion Rate">
+                        </div>
+                        <div class="metric-info">
+                            <h3>Completion Rate</h3>
+                            <p class="metric-value">78%</p>
+                            <span class="metric-trend positive">↑ 8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <h3>Project Progress</h3>
+                        <canvas id="projectProgress"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Task Distribution</h3>
+                        <canvas id="taskDistribution"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="activities-section">
+                    <h3>Recent Activities</h3>
+                    <div class="activity-list">
+                        <!-- Activity items will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Upcoming Deadlines -->
+                <div class="deadlines-section">
+                    <h3>Upcoming Deadlines</h3>
+                    <div class="deadline-list">
+                        <!-- Deadline items will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/include-sidebar.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/theme-manager.js"></script>
+</body>
+</html> 

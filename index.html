@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Home - EduLearn</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4a90e2">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="EduLearn">
+    <meta name="apple-mobile-web-app-title" content="EduLearn">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  </head>
+  <body>
+    <div class="top-nav">
+        <a href="pages/dashboard.html" class="btn dashboard-btn">Dashboard</a>
+    </div>
+
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+      <div class="home-container">
+        <header class="welcome-section">
+          <h1>Welcome to EduLearn</h1>
+          <p class="date">Today is <span id="currentDate"></span></p>
+        </header>
+
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <a href="pages/courses.html">
+                <img src="./assets/courses.svg" alt="courses">
+              </a>
+            </div>
+            <div class="stat-info">
+              <h3>Enrolled Courses</h3>
+              <p class="stat-value">5</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <a href="pages/projects.html">
+                <img src="./assets/projects.svg" alt="projects">
+              </a>
+            </div>
+            <div class="stat-info">
+              <h3>Active Projects</h3>
+              <p class="stat-value">3</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <a href="pages/materials.html">
+                <img src="./assets/materials.svg" alt="materials">
+              </a>
+            </div>
+            <div class="stat-info">
+              <h3>Study Materials</h3>
+              <p class="stat-value">15</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="upcoming-deadlines">
+          <h2>Upcoming Deadlines</h2>
+          <div class="deadline-list">
+            <div class="deadline-item">
+              <div class="deadline-icon">
+                <img src="./assets/calendar.svg" alt="deadline">
+              </div>
+              <div class="deadline-details">
+                <h4>Mathematics Project</h4>
+                <p>Research Paper Due</p>
+                <span class="deadline-date">Oct 15, 2023</span>
+              </div>
+            </div>
+
+            <div class="deadline-item">
+              <div class="deadline-icon">
+                <img src="./assets/calendar.svg" alt="deadline">
+              </div>
+              <div class="deadline-details">
+                <h4>Chemistry Research</h4>
+                <p>Lab Report Submission</p>
+                <span class="deadline-date">Nov 20, 2023</span>
+              </div>
+            </div>
+
+            <div class="deadline-item">
+              <div class="deadline-icon">
+                <img src="./assets/calendar.svg" alt="deadline">
+              </div>
+              <div class="deadline-details">
+                <h4>Physics Quiz</h4>
+                <p>Chapter 5: Mechanics</p>
+                <span class="deadline-date">Oct 25, 2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-materials">
+          <h2>Recently Added Materials</h2>
+          <div class="materials-list">
+            <div class="material-item">
+              <div class="material-icon">
+                <img src="./assets/pdf.svg" alt="pdf">
+              </div>
+              <div class="material-details">
+                <h4>Calculus Notes</h4>
+                <p>Mathematics</p>
+                <span class="material-size">2.5 MB</span>
+              </div>
+            </div>
+
+            <div class="material-item">
+              <div class="material-icon">
+                <img src="./assets/video.svg" alt="video">
+              </div>
+              <div class="material-details">
+                <h4>Lab Experiments</h4>
+                <p>Physics</p>
+                <span class="material-duration">60 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <h1>Welcome to EduLearn</h1>
+          <p>Your personalized learning journey starts here</p>
+          <div class="cta-buttons">
+            <a href="pages/courses.html" class="btn primary-btn">Get Started</a>
+            <a href="pages/dashboard.html" class="btn secondary-btn">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/include-sidebar.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/theme-manager.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful');
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+    <button class="install-button" onclick="installApp()" style="display: none;">
+      Install EduLearn App
+    </button>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+/* Dark Theme Text Colors */
+.dark-theme .subject-card h3 {
+    color: #ffffff;
+}
+
+.dark-theme .material-link {
+    color: #ffffff;
+}
+
+.dark-theme .material-link span {
+    color: #ffffff;
+}
+
+.dark-theme .material-size,
+.dark-theme .material-duration {
+    color: #a0a0a0; /* slightly dimmed for secondary information */
+}
+
+/* Card Styles for Dark Mode */
+.dark-theme .subject-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-dark);
+}
+
+.dark-theme .material-list li {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.dark-theme .material-list li:last-child {
+    border-bottom: none;
+}
+
+/* Hover States in Dark Mode */
+.dark-theme .material-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Subject Headers */
+.dark-theme .subject-card h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Material List Items */
+.dark-theme .material-list a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+} 

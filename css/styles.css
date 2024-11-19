@@ -1,0 +1,530 @@
+:root {
+    /* Light Theme Variables */
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --bg-light: #ffffff;
+    --bg-card: #ffffff;
+    --border-color: #e0e0e0;
+    --accent-color: #4CAF50;
+    --accent-dark: #388E3C;
+    --sidebar-width: 80px;
+    --sidebar-expanded: 280px;
+    --header-height: 60px;
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --bg-dark: #1a1a1a;
+    --bg-card: #2d2d2d;
+    --border-color-dark: #404040;
+    background-color: var(--bg-dark);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-light);
+    transition: background-color 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: var(--bg-light);
+    transition: width 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.sidebar.expanded {
+    width: var(--sidebar-expanded);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.logo-wrapper img {
+    width: 40px;
+    height: 40px;
+}
+
+.toggle-wrapper {
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    z-index: 1001;
+}
+
+.toggle-sidebar-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    margin-left: 8px;
+}
+
+.sidebar.expanded .toggle-sidebar-btn {
+    transform: rotate(180deg);
+}
+
+.sidebar-links {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.link.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.link img {
+    width: 24px;
+    height: 24px;
+}
+
+.hidden {
+    display: none;
+}
+
+.sidebar.expanded .hidden {
+    display: block;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: var(--header-height) 2rem 2rem;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.expanded + .main-content {
+    margin-left: var(--sidebar-expanded);
+}
+
+/* Dark Theme Adjustments */
+.dark-theme .sidebar {
+    background: var(--bg-dark);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .toggle-sidebar-btn {
+    background: var(--bg-dark);
+}
+
+.dark-theme .toggle-sidebar-btn img {
+    filter: invert(1);
+}
+
+.dark-theme .link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.expanded {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.expanded + .main-content {
+        margin-left: 0;
+    }
+}
+
+/* User Profile Styles */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto; /* Push to bottom */
+    width: 100%; /* Full width */
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent avatar from shrinking */
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-details {
+    overflow: hidden; /* Prevent text overflow */
+}
+
+.username {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Sidebar Bottom Section */
+.sidebar-bottom {
+    margin-top: auto; /* Push to bottom */
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Dark Theme Adjustments */
+.dark-theme .user-profile {
+    border-color: var(--border-color-dark);
+}
+
+.dark-theme .sidebar-bottom {
+    border-color: var(--border-color-dark);
+}
+
+/* Path-specific visibility */
+.index-path {
+    display: none;
+}
+
+.subdir-path {
+    display: none;
+}
+
+/* Show correct paths based on page location */
+body[data-page="index"] .index-path {
+    display: block;
+}
+
+body:not([data-page="index"]) .subdir-path {
+    display: block;
+}
+
+/* Sidebar link active state */
+.sidebar-links .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background-color 0.3s;
+}
+
+.sidebar-links .link.active {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+}
+
+.sidebar-links .link.active img {
+    filter: brightness(0) invert(1); /* Makes the icon white when active */
+}
+
+.sidebar-links .link:hover {
+    background-color: rgba(76, 175, 80, 0.1); /* Light green on hover */
+}
+
+/* Icon color handling for dark theme */
+.dark-theme .sidebar img,
+.dark-theme .sidebar-links .link img,
+.dark-theme .user-profile img,
+.dark-theme .toggle-sidebar-btn img {
+    filter: brightness(0) invert(1); /* Makes icons white */
+}
+
+/* Keep profile picture and logo normal */
+.dark-theme .user-avatar img,
+.dark-theme .logo-wrapper img {
+    filter: none; /* Reset filter for these specific images */
+}
+
+/* Sidebar link hover and active states in dark mode */
+.dark-theme .sidebar-links .link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .sidebar-links .link.active {
+    background-color: #4CAF50; /* Keep the green background for active state */
+}
+
+/* Optional: if you want to adjust the opacity of icons in dark mode */
+.dark-theme .sidebar-links .link:not(.active) img {
+    opacity: 0.8;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-primary);
+    border-radius: 8px;
+    display: none;
+}
+
+/* Dark theme specific styles */
+.dark-theme .theme-toggle {
+    background-color: #1a1a1a; /* Dark background */
+    color: white; /* White text */
+}
+
+.dark-theme .theme-toggle img {
+    filter: brightness(0) invert(1); /* White icon */
+}
+
+.dark-theme .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Make the toggle theme button match other sidebar links */
+.theme-toggle {
+    text-align: left;
+    font-size: inherit;
+    font-family: inherit;
+    width: 100%;
+}
+
+.theme-toggle span {
+    color: inherit;
+}
+
+/* Optional: Add transition for smooth color changes */
+.theme-toggle {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Top Navigation Styles */
+.top-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.dashboard-btn {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: var(--accent-color);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-btn:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Adjust for mobile devices */
+@media (max-width: 768px) {
+    .top-nav {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .dashboard-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Add these media queries and responsive styles */
+@media screen and (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .quick-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .stat-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .deadline-list, .materials-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Additional mobile optimizations */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .deadline-item, .material-item {
+    padding: 10px;
+  }
+
+  .top-nav {
+    padding: 10px;
+  }
+}
+
+.menu-toggle {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    min-width: 44px; /* Minimum touch target size */
+    min-height: 44px;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        padding: 15px;
+    }
+}
+
+/* Add media query for mobile devices */
+@media (max-width: 768px) {
+    .toggle-wrapper {
+        right: -50px;  /* Increase spacing on mobile */
+    }
+    
+    .toggle-sidebar-btn {
+        width: 45px;  /* Make button slightly larger on mobile */
+        height: 45px;
+    }
+}
